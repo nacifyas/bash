@@ -44,7 +44,7 @@ DEST=$2
         rm -rf "${DEST_PATH}"/*
     fi
     echo "Running back up on $TARGET_PATH. Result will be stored at $DEST_PATH"
-    systemd-inhibit --why="Backup process on $TARGET_PATH" tar cvf - "$TARGET_PATH" | gzip -9 -> "$DEST_PATH"/"$NAME"
+    tar cvf - "$TARGET_PATH" | gzip -9 -> "$DEST_PATH"/"$NAME"
 }
 
  main () {
