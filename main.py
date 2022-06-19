@@ -30,7 +30,7 @@ def main():
             r.set(name="WAIT_TIME", value=remaining_time-1)
             print("Notification sent {} hours ago. If the problem persists, next email notification will be sent in {} hours".format(WAIT_TIME-remaining_time, remaining_time))
     else:
-        print("IP address match. Everything is fine")
+        print("IP addresses match. Everything is fine")
         r.set(name="WAIT_TIME", value=0)
 
 
