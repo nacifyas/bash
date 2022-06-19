@@ -4,10 +4,10 @@ DOMAIN = "vpn.atomflare.tk"
 CURRENT_IP = urllib.request.urlopen('https://ident.me').read().decode('utf8')
 DOMAIN_IP = socket.gethostbyname(DOMAIN)
 WAIT_TIME = 12
-REDIS_URL = "redis://atomflare.af:6385"
-r = redis.from_url(REDIS_URL)
+REDIS_HOST = "atomflare.af"
+REDIS_PORT = "6385"
+r = redis.StrictRedis(REDIS_HOST, REDIS_PORT, charset='utf-8', decode_responses=True)
 REDIS_STATUS = r.ping()
-
 
 def send_email():
     cmd = '''echo "Atomflare Public IP address has changed.\n\nCloudflare registries have {}.\nThe current IP address is: {}\n\nTargeted domain is: {}"  | mail -s "IP ADDRESS CHANGE NOTIFICATION" atomflare.events@gmail.com'''.format(DOMAIN_IP, CURRENT_IP, DOMAIN)
